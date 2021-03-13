@@ -24,13 +24,15 @@ function generatePalette(starterPalette) {
     let shades = generateScale(color.color, 10);
     let count = 0;
     for (let level of levels) {
+      let rgb = chroma(shades[count]).rgb();
+      let rgba = chroma(shades[count]).rgba();
       newPalette.colors[level].push({
-        id: color.name,
+        id: color.name.toLowerCase().replace(/ /g, "-"),
         name: `${color.name} ${level}`,
         hex: shades[count],
         hexNoHash: shades[count].slice(1),
-        rgb: chroma(shades[count]).rgb(),
-        rgba: chroma(shades[count]).rgba()
+        rgb: `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`,
+        rgba: `rgba(${rgba[0]}, ${rgba[1]}, ${rgba[2]}, ${rgba[3]})`
       });
       count++;
     }
@@ -40,9 +42,10 @@ function generatePalette(starterPalette) {
 }
 
 function getRange(hexColor) {
-  const end = "#fff";
+  // const end = "#fff";
+  const end = chroma(hexColor).brighten(2.5).hex();
   return [
-    chroma(hexColor).darken(1.4).hex(), hexColor, end
+    end, hexColor, chroma(hexColor).darken(1.4).hex()
   ];
 }
 
