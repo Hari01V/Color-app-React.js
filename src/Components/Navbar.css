@@ -5,19 +5,17 @@
   align-items: center;
   justify-content: space-between;
 }
-.logo{
-  background: #eceff1;
+a{
   height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  margin-right: 12px;
-}
-.logo a{
   color: black;
+  background: #eceff1;
   text-decoration: none;
   font-family: sans-serif;
   letter-spacing: 2px;
+  padding: 1rem;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
 }
 .Navbar-Level-Slider{
   width: 500px;

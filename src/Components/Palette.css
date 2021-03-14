@@ -3,11 +3,20 @@
   overflow: hidden;
 }
 .Palette-header{
-  height: 10vh;
+  height: 10%;
   min-height: 80px;
 }
 .Palette-colors{
-  height: 90%;
+  height: 85%;
   display: flex;
   flex-wrap: wrap;
+}
+.Palette-footer{
+  height: 5%;
+  margin-right: 3rem;
+  font-weight: 500;
+  font-size: 11pt;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }

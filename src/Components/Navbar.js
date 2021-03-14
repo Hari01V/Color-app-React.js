@@ -6,15 +6,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Snackbar from '@material-ui/core/Snackbar';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 class Navbar extends Component {
   render() {
     return (
       <div className="Navbar">
-        <div className="logo">
-          <a href="#">ReactColorPicker</a>
-        </div>
+        <Link exact to="/">ReactColorPicker</Link>
         <div className="Navbar-Level-Slider">
           <Slider
             defaultValue={this.props.currentLevel}

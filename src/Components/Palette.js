@@ -58,7 +58,9 @@ class Palette extends Component {
         <div className="Palette-colors">
           {colorBoxes}
         </div>
-        {/* footer */}
+        <footer className="Palette-footer">
+          <span>{this.state.paletteName} {this.state.emoji}</span>
+        </footer>
       </div>
     );
   }
