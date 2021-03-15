@@ -11,26 +11,29 @@ import './Navbar.css';
 
 class Navbar extends Component {
   render() {
+    let { currentLevel, currentFormat, changeSlider, changeFormat, snackbarOpen, closeSnackbar, singleColorPalette } = this.props;
+
     return (
       <div className="Navbar">
-        <Link exact to="/">ReactColorPicker</Link>
-        <div className="Navbar-Level-Slider">
-          <Slider
-            defaultValue={this.props.currentLevel}
-            min={100}
-            max={900}
-            step={100}
-            onChange={(value) => this.props.changeSlider(value)}
-          />
-        </div>
+        <Link to="/">ReactColorPicker</Link>
+        {!singleColorPalette &&
+          <div className="Navbar-Level-Slider">
+            <Slider
+              defaultValue={currentLevel}
+              min={100}
+              max={900}
+              step={100}
+              onChange={(value) => changeSlider(value)}
+            />
+          </div>}
         <div className="select-container">
           <FormControl variant="outlined" >
             <InputLabel id="select-label">Format</InputLabel>
             <Select
               labelId="select-label"
               id="select-format"
-              value={this.props.currentFormat}
-              onChange={this.props.changeFormat}
+              value={currentFormat}
+              onChange={changeFormat}
               label="Format"
             >
               <MenuItem value="hex">HEX - #ffffff</MenuItem>
@@ -44,10 +47,10 @@ class Navbar extends Component {
             vertical: 'bottom',
             horizontal: 'left'
           }}
-          open={this.props.snackbarOpen}
+          open={snackbarOpen}
           autoHideDuration={3000}
-          onClose={this.props.closeSnackbar}
-          message={<span id="message-id">Format Changed to {this.props.currentFormat}</span>}
+          onClose={closeSnackbar}
+          message={<span id="message-id">Format Changed to {currentFormat}</span>}
           ContentProps={{
             "aria-describedby": "message-id"
           }}

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './Palette.css';
 import ColorBox from './ColorBox.js';
-import { generatePalette } from '../colorHelpers.js';
 import Navbar from './Navbar.js';
+import instance from '../currentHelpers.js';
 
 class Palette extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...generatePalette(this.props.starterPalette),
+      ...(this.props.starterPalette),
       currentLevel: 400,
-      currentFormat: "hex",
+      currentFormat: instance.colorFormat,
       snackbarOpen: false
     }
     this.changeLevel = this.changeLevel.bind(this);
@@ -25,6 +25,7 @@ class Palette extends Component {
   }
 
   changeFormat(e) {
+    instance.colorFormat = e.target.value;
     this.setState({
       currentFormat: e.target.value,
       snackbarOpen: true
@@ -42,12 +43,13 @@ class Palette extends Component {
   render() {
     let level = this.state.currentLevel;
     const colorBoxes = this.state.colors[level].map(color => (
-      <ColorBox {...color} color={color[this.state.currentFormat]} />
+      <ColorBox {...color} key={color.id} color={color[this.state.currentFormat]} paletteId={this.state.id} showMoreLink={true} />
     ));
     return (
       <div className="Palette">
         <div className="Palette-header">
           <Navbar
+            singleColorPalette={false}
             currentLevel={this.state.currentLevel}
             changeSlider={this.changeLevel}
             changeFormat={this.changeFormat}

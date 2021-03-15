@@ -44,7 +44,7 @@ function MiniPalette(props) {
     <div className={classes.card} onClick={props.handleClick}>
       <div className={classes.cardImg}>
         {props.colors.map((color) => (
-          <div className={classes.imgBox} style={{ background: color.color }}></div>
+          <div className={classes.imgBox} key={color.name} style={{ background: color.color }}></div>
         ))}
       </div>
       <div className={classes.cardBody}>

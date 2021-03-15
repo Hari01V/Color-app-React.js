@@ -4,6 +4,9 @@
   cursor: pointer;
   position: relative;
 }
+.singleColorPalette .ColorBox{
+  height: 50%;
+}
 .copy-container{
   height: 100%;
 }
@@ -43,6 +46,8 @@
   right: 0;
   bottom: 0;
   padding: 0.4rem;
+  margin: 0;
+  height: fit-content;
   font-size: 12px;
   letter-spacing: 1px;
   background: rgba(255, 255, 255, 0.3);
