@@ -5,6 +5,7 @@ import Palette from './Components/Palette.js';
 import PaletteList from './Components/PaletteList.js';
 import seedPalettes from './seedPalettes.js';
 import SingleColorPalette from './Components/SingleColorPalette.js';
+import NewPaletteForm from './Components/NewPaletteForm.js';
 
 function findPalette(id) {
   return seedPalettes.find(palette => palette.id === id);
@@ -31,6 +32,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/" render={(routeProps) => <PaletteList {...routeProps} />} />
+        <Route exact path="/palette/new" render={() => <NewPaletteForm />} />
         <Route exact path="/palette/:id" render={(routeProps) => <Palette starterPalette={generatePalette(findPalette(routeProps.match.params.id))} />} />
         <Route exact path="/palette/:paletteId/:colorId" render={(routeProps) => <SingleColorPalette {...findSingleColorPalette(routeProps.match.params.paletteId, routeProps.match.params.colorId)} {...routeProps} />} />
       </Switch>
