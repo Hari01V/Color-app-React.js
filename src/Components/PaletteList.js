@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import seedPalettes from '../seedPalettes';
 import MiniPalette from './MiniPalette.js';
 import { withStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
@@ -57,7 +56,7 @@ class PaletteList extends Component {
             <Link to="/palette/new">Create Palette</Link>
           </div>
           <div className={this.props.classes.palettes}>
-            {seedPalettes.map(palette => (
+            {this.props.palettes.map(palette => (
               <MiniPalette {...palette} key={palette.id} handleClick={() => this.goToPalette(palette.id)} />
             ))}
           </div>
