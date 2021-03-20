@@ -52,7 +52,7 @@ class App extends Component {
             path="/" render={(routeProps) => <PaletteList {...routeProps} palettes={this.state.palettes} />} />
           <Route exact
             path="/palette/new"
-            render={(routeProps) => <NewPaletteForm savePalette={this.savePalette} {...routeProps} />} />
+            render={(routeProps) => <NewPaletteForm savePalette={this.savePalette} palettes={this.state.palettes} {...routeProps} />} />
           <Route exact
             path="/palette/:id"
             render={(routeProps) => <Palette starterPalette={generatePalette(this.findPalette(routeProps.match.params.id))} />} />

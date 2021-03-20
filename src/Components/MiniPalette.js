@@ -19,6 +19,7 @@ const styles = {
     height: "120px",
     display: "flex",
     flexWrap: "wrap",
+    alignContent: "flex-start",
     borderRadius: "5px",
     overflow: "hidden"
   },
