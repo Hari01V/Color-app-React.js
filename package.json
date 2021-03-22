@@ -8,6 +8,7 @@
     "@material-ui/styles": "^4.11.3",
     "chroma-js": "^2.1.0",
     "cra-template": "1.1.2",
+    "emoji-mart": "^3.0.1",
     "rc-slider": "^9.7.1",
     "react": "^17.0.1",
     "react-color": "^2.19.3",
