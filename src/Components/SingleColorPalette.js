@@ -1,44 +1,21 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox.js';
-import { withStyles } from '@material-ui/styles';
 import Navbar from './Navbar.js';
 import instance from '../currentHelpers.js';
-
-const styles = {
-  backBox: {
-    width: "20%",
-    height: "50%",
-    cursor: "pointer",
-    position: "relative",
-    background: "black",
-    "& button": {
-      width: "90px",
-      height: "25px",
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      marginLeft: "-50px",
-      marginTop: "-15px",
-      outline: "none",
-      background: "rgba(255, 255, 255, 0.3)",
-      fontSize: "0.8rem",
-      lineHeight: "25px",
-      color: "white",
-      border: "none",
-      cursor: "pointer"
-    }
-  }
-};
+import { withStyles } from '@material-ui/core/styles';
+import styles from '../styles/SingleColorPalettestyle.js';
 
 class SingleColorPalette extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentFormat: instance.colorFormat,
-      snackbarOpen: false
+      snackbarOpen: false,
+      colorBoxOverflow: false
     }
     this.changeFormat = this.changeFormat.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
+    this.changeColorBoxOverflow = this.changeColorBoxOverflow.bind(this);
   }
 
   changeFormat(e) {
@@ -57,11 +34,18 @@ class SingleColorPalette extends Component {
     }
   }
 
+  changeColorBoxOverflow(value) {
+    this.setState({
+      colorBoxOverflow: value
+    });
+  }
+
   render() {
     let { colors, paletteName, emoji } = this.props;
+    const { classes } = this.props;
     return (
-      <div className="Palette">
-        <div className="Palette-header">
+      <div className={classes.Palette} style={{ overflowY: this.state.colorBoxOverflow ? "hidden" : "scroll" }}>
+        <div className={classes.PaletteHeader}>
           <Navbar
             singleColorPalette={true}
             changeFormat={this.changeFormat}
@@ -70,17 +54,18 @@ class SingleColorPalette extends Component {
             closeSnackbar={this.closeSnackbar}
           />
         </div>
-        <div className="Palette-colors singleColorPalette">
+        <div className={`${classes.PaletteColors} ${classes.singleColorPalette}`}>
           {colors.map(color =>
             <ColorBox
               key={color.name}
               color={color[this.state.currentFormat]} {...color}
-              showMoreLink={false} />)}
-          <div className={this.props.classes.backBox}>
+              showMoreLink={false}
+              changeColorBoxOverflow={this.changeColorBoxOverflow} />)}
+          <div className={classes.backBox}>
             <button onClick={this.props.history.goBack}>GO BACK</button>
           </div>
         </div>
-        <footer className="Palette-footer">
+        <footer className={classes.PaletteFooter}>
           <span>{paletteName} {emoji}</span>
         </footer>
       </div>

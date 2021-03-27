@@ -3,38 +3,7 @@ import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { withStyles } from '@material-ui/core/styles';
-import { mergeClasses } from '@material-ui/styles';
-
-const styles = {
-  root: {
-    width: "100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  },
-  picker: {
-    margin: "1rem"
-  },
-  form: {
-    width: "100%",
-    "& div": {
-      width: "100%",
-      "& label": {
-        padding: "0 0.5rem"
-      },
-      "& input": {
-        paddingLeft: "0.5rem"
-      },
-      "& p": {
-        paddingLeft: "0.5rem"
-      }
-    },
-    "& button": {
-      width: "100%",
-      margin: "0.5rem 0"
-    }
-  }
-};
+import styles from '../styles/ColorPickerFormStyle.js';
 
 class ColorPickerForm extends Component {
   constructor(props) {
@@ -71,7 +40,7 @@ class ColorPickerForm extends Component {
 
   componentDidMount() {
     ValidatorForm.addValidationRule('isColorNameUnique', (value) => {
-      let isMatch = this.props.colors.find(color => color.name === value.toLowerCase());
+      let isMatch = this.props.colors.find(color => color.name.toLowerCase() === value.toLowerCase());
       if (!isMatch) {
         return true;
       } else {

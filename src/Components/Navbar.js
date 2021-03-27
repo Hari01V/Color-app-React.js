@@ -7,17 +7,19 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
+import { withStyles } from '@material-ui/styles';
+import styles from '../styles/Navbarstyle.js';
 
 class Navbar extends Component {
   render() {
     let { currentLevel, currentFormat, changeSlider, changeFormat, snackbarOpen, closeSnackbar, singleColorPalette } = this.props;
+    const { classes } = this.props;
 
     return (
-      <div className="Navbar">
-        <Link to="/">ReactColorPicker</Link>
+      <div className={classes.Navbar}>
+        <Link to="/" >ReactColorPicker</Link>
         {!singleColorPalette &&
-          <div className="Navbar-Level-Slider">
+          <div className={classes.NavbarLevelSlider}>
             <Slider
               defaultValue={currentLevel}
               min={100}
@@ -26,7 +28,7 @@ class Navbar extends Component {
               onChange={(value) => changeSlider(value)}
             />
           </div>}
-        <div className="select-container">
+        <div className={classes.selectContainer}>
           <FormControl variant="outlined" >
             <InputLabel id="select-label">Format</InputLabel>
             <Select
@@ -60,4 +62,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default withStyles(styles)(Navbar);
