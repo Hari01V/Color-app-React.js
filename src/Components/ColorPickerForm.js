@@ -75,7 +75,8 @@ class ColorPickerForm extends Component {
           className={classes.picker} />
         <ValidatorForm
           onSubmit={this.handleSubmit}
-          className={classes.form}>
+          className={classes.form}
+          instantValidate={false}>
           <TextValidator
             label="Color Name"
             onChange={this.handleNameChange}

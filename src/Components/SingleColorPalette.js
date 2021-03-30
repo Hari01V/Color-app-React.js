@@ -41,16 +41,16 @@ class SingleColorPalette extends Component {
   }
 
   render() {
-    let { colors, paletteName, emoji } = this.props;
-    const { classes } = this.props;
+    const { classes, colors, paletteName, emoji } = this.props;
+    const { currentFormat, snackbarOpen } = this.state;
     return (
-      <div className={classes.Palette} style={{ overflowY: this.state.colorBoxOverflow ? "hidden" : "scroll" }}>
+      <div className={classes.Palette} style={{ overflowY: this.state.colorBoxOverflow ? "hidden" : "auto" }}>
         <div className={classes.PaletteHeader}>
           <Navbar
             singleColorPalette={true}
             changeFormat={this.changeFormat}
-            currentFormat={this.state.currentFormat}
-            snackbarOpen={this.state.snackbarOpen}
+            currentFormat={currentFormat}
+            snackbarOpen={snackbarOpen}
             closeSnackbar={this.closeSnackbar}
           />
         </div>
@@ -58,7 +58,7 @@ class SingleColorPalette extends Component {
           {colors.map(color =>
             <ColorBox
               key={color.name}
-              color={color[this.state.currentFormat]} {...color}
+              color={color[currentFormat]} {...color}
               showMoreLink={false}
               changeColorBoxOverflow={this.changeColorBoxOverflow} />)}
           <div className={classes.backBox}>

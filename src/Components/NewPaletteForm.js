@@ -11,6 +11,7 @@ import { arrayMove } from 'react-sortable-hoc';
 import PaletteFormNav from './PaletteFormNav.js';
 import ColorPickerForm from './ColorPickerForm.js';
 import styles from '../styles/NewPaletteFormstyle.js';
+import seedPalettes from '../seedPalettes.js';
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -20,7 +21,7 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       open: true,
-      colors: this.props.palettes[0].colors
+      colors: seedPalettes[0].colors
     }
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -75,8 +76,19 @@ class NewPaletteForm extends Component {
     })
   }
   addRandomColor() {
-    const allColors = this.props.palettes.map(p => p.colors).flat();
-    var rand = Math.floor(Math.random() * allColors.length);
+    let allColors = this.props.palettes.map(p => p.colors).flat();
+    console.log(allColors.length);
+    if (allColors.length > 20) {
+      allColors = this.props.palettes.map(p => p.colors).flat();
+    } else {
+      allColors = seedPalettes.map(p => p.colors).flat();
+    }
+    let isDuplicateColor = true;
+    while (isDuplicateColor) {
+      var rand = Math.floor(Math.random() * allColors.length);
+      var randomColor = allColors[rand];
+      isDuplicateColor = this.state.colors.some(color => color.name === randomColor.name);
+    }
     this.setState({
       colors: [...this.state.colors, allColors[rand]]
     })
@@ -102,7 +114,8 @@ class NewPaletteForm extends Component {
           handleDrawerOpen={this.handleDrawerOpen}
           handleNameChange={this.handleNameChange}
           submitPalette={this.submitPalette}
-          palettes={this.props.palettes} />
+          palettes={this.props.palettes}
+          history={this.props.history} />
         <Drawer
           className={classes.drawer}
           variant="persistent"
@@ -112,6 +125,7 @@ class NewPaletteForm extends Component {
             paper: classes.drawerPaper,
           }}>
           <div className={classes.drawerHeader}>
+            <h2>Create A Palette</h2>
             <IconButton onClick={this.handleDrawerClose}>
               <ChevronLeftIcon />
             </IconButton>

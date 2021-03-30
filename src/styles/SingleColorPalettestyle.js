@@ -56,7 +56,7 @@ export default {
     }
   },
   PaletteFooter: {
-    height: "5%",
+    height: "4%",
     marginRight: "3rem",
     fontWeight: "500",
     fontSize: "11pt",

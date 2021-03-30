@@ -19,7 +19,13 @@ const styles = theme => ({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end'
+    justifyContent: 'space-between',
+    "& h2": {
+      fontSize: "1.1rem",
+      fontWeight: "300",
+      paddingLeft: "1rem",
+      color: "black"
+    }
   },
   drawerContent: {
     padding: "1rem",

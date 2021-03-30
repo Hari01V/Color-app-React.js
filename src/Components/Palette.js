@@ -62,7 +62,7 @@ class Palette extends Component {
       />
     ));
     return (
-      <div className={classes.Palette} style={{ overflowY: this.state.colorBoxOverflow ? "hidden" : "scroll" }}>
+      <div className={classes.Palette} style={{ overflowY: this.state.colorBoxOverflow ? "hidden" : "auto" }}>
         <div className={classes.PaletteHeader}>
           <Navbar
             singleColorPalette={false}

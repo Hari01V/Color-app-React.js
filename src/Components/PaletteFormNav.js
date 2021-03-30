@@ -6,7 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import LibraryAddRoundedIcon from '@material-ui/icons/LibraryAddRounded';
-import { Link } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
 import PaletteMetaForm from './PaletteMetaForm';
 import styles from '../styles/PaletteFormNavstyle.js';
@@ -17,7 +16,7 @@ class PaletteFormNav extends Component {
   }
 
   render() {
-    const { classes, open, newPaletteName, handleDrawerOpen, handleNameChange, submitPalette } = this.props;
+    const { classes, open, handleDrawerOpen, submitPalette } = this.props;
 
     return (
       <div className={classes.root}>
@@ -39,15 +38,18 @@ class PaletteFormNav extends Component {
                 <LibraryAddRoundedIcon />
               </IconButton>
             }
-            <h2 >Create A Palette</h2>
+            {!open &&
+              <h2>Create A Palette</h2>}
           </Toolbar>
           <div className={classes.navBtn}>
             <PaletteMetaForm
               palettes={this.props.palettes}
               submitPalette={submitPalette} />
-            <Link to="/" style={{ margin: "0 1rem" }} >
-              <Button variant="contained" color="secondary">Go Back</Button>
-            </Link>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={this.props.history.goBack}
+              style={{ margin: "0 1rem" }}>Go Back</Button>
           </div>
         </AppBar>
       </div>

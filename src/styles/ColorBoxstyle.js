@@ -90,7 +90,7 @@ export default {
     width: "100%",
     height: "100%",
     transform: "scale(0.1)",
-    transition: "transform 0.6s ease-in-out",
+    transition: "transform 1s ease-in-out",
     position: "absolute"
   },
   copyOverlayShow: {

@@ -12,7 +12,7 @@ import styles from '../styles/Navbarstyle.js';
 
 class Navbar extends Component {
   render() {
-    let { currentLevel, currentFormat, changeSlider, changeFormat, snackbarOpen, closeSnackbar, singleColorPalette } = this.props;
+    const { currentLevel, currentFormat, changeSlider, changeFormat, snackbarOpen, closeSnackbar, singleColorPalette } = this.props;
     const { classes } = this.props;
 
     return (

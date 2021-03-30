@@ -21,6 +21,7 @@ class PaletteMetaForm extends Component {
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleClickOpen() {
@@ -43,6 +44,11 @@ class PaletteMetaForm extends Component {
     }));
   }
 
+  handleSubmit(emoji) {
+    this.props.submitPalette(this.state.newPaletteName, emoji);
+    this.handleClose();
+  }
+
   componentDidMount() {
     ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => {
       let isMatch = this.props.palettes.find(palette => palette.paletteName.toLowerCase() === value.toLowerCase());
@@ -59,8 +65,7 @@ class PaletteMetaForm extends Component {
   }
 
   render() {
-    const { open, stage, newPaletteName } = this.state;
-    const { submitPalette } = this.props;
+    const { stage, newPaletteName } = this.state;
     return (
       <div>
         <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
@@ -72,7 +77,7 @@ class PaletteMetaForm extends Component {
           <DialogTitle id="form-dialog-title">Choose A Palette Emoji</DialogTitle>
           <Divider />
           <Picker
-            onSelect={(emoji) => submitPalette(newPaletteName, emoji)}
+            onSelect={this.handleSubmit}
             title="Pick a Palette Emoji" />
         </Dialog>
         <Dialog
