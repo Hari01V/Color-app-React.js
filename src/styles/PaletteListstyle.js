@@ -2,6 +2,15 @@ import sizes from '../sizes.js';
 import bg from '../Confetti-Doodles.svg';
 
 export default {
+  "@global": {
+    ".fade-exit": {
+      opacity: 1
+    },
+    ".fade-exit-active": {
+      opacity: 0,
+      transition: "opacity 500ms ease-out"
+    }
+  },
   root: {
     backgroundColor: "#0826aa",
     backgroundImage: `url(${bg})`,
@@ -40,6 +49,5 @@ export default {
   palettes: {
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "center"
   }
 }
