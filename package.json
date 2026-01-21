@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/styles": "^4.11.3",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@material-ui/styles": "^4.11.5",
     "chroma-js": "^2.1.0",
     "cra-template": "1.1.2",
     "emoji-mart": "^3.0.1",
@@ -16,7 +16,7 @@
     "react-dom": "^17.0.1",
     "react-material-ui-form-validator": "^2.1.4",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.2",
+    "react-scripts": "5.0.0",
     "react-sortable-hoc": "^2.0.0",
     "react-transition-group": "^4.4.1",
     "web-vitals": "^1.1.0"
